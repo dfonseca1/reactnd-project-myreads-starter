@@ -1,8 +1,26 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import BookShelf from '../components/bookShelf';
+import * as BooksAPI from '../BooksAPI';
 
 class ListBooks extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            allBooks: []
+        }
+    }
+
+    componentDidMount() {
+        BooksAPI.getAll()
+        .then((books)=>{
+            this.setState({
+                allBooks: books
+            });
+            console.log(books);
+        });
+    }
 
     render() {
         return (
@@ -19,7 +37,7 @@ class ListBooks extends React.Component {
                 </div>
                 <div className="open-search">
                     <button >
-                        <Link style={{display: 'block', height: '100%'}} to="/search">Add a book</Link>
+                        <Link style={{ display: 'block', height: '100%' }} to="/search">Add a book</Link>
                     </button>
                 </div>
             </div>
