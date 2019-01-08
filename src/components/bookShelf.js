@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 
 class BookShelf extends React.Component {
-
+    constructor(props){
+        super(props);
+        this.state = {
+            books: []
+        }
+    }
     render() {
         return (
             <div className="bookshelf">
