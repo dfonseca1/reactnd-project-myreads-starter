@@ -14,12 +14,12 @@ class ListBooks extends React.Component {
 
     componentDidMount() {
         BooksAPI.getAll()
-        .then((books)=>{
-            this.setState({
-                allBooks: books
+            .then((books) => {
+                this.setState({
+                    allBooks: books
+                });
+                console.log(books);
             });
-            console.log(books);
-        });
     }
 
     render() {
@@ -30,9 +30,12 @@ class ListBooks extends React.Component {
                 </div>
                 <div className="list-books-content">
                     <div>
-                        <BookShelf shelfName={'Currently Reading'} />
-                        <BookShelf shelfName={'Want to Read'} />
-                        <BookShelf shelfName={'Read'} />
+                        <BookShelf shelfName={'Currently Reading'} books={
+                            this.state.allBooks.filter((book) => book.shelf === 'currentlyReading')} />
+                        <BookShelf shelfName={'Want to Read'} books={
+                            this.state.allBooks.filter((book) => book.shelf === 'wantToRead')} />
+                        <BookShelf shelfName={'Read'} books={
+                            this.state.allBooks.filter((book) => book.shelf === 'read')} />
                     </div>
                 </div>
                 <div className="open-search">
