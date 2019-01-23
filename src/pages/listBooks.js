@@ -6,10 +6,21 @@ import * as BooksAPI from '../BooksAPI';
 class ListBooks extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             allBooks: []
         }
+        this.handleShelfChange = this.handleShelfChange.bind(this);
+    }
+
+    handleShelfChange(bookChanged, newShelf) {
+        let newBook = this.state.allBooks.filter(book => book.id === bookChanged.id);
+        newBook[0].shelf = newShelf;
+
+        this.setState({
+            allBooks: [...this.state.allBooks, newBook]
+        });
+
+        
     }
 
     componentDidMount() {
@@ -30,11 +41,11 @@ class ListBooks extends React.Component {
                 </div>
                 <div className="list-books-content">
                     <div>
-                        <BookShelf shelfName={'Currently Reading'} books={
+                        <BookShelf changeShelf={this.handleShelfChange} shelfName={'Currently Reading'} books={
                             this.state.allBooks.filter((book) => book.shelf === 'currentlyReading')} />
-                        <BookShelf shelfName={'Want to Read'} books={
+                        <BookShelf changeShelf={this.handleShelfChange} shelfName={'Want to Read'} books={
                             this.state.allBooks.filter((book) => book.shelf === 'wantToRead')} />
-                        <BookShelf shelfName={'Read'} books={
+                        <BookShelf changeShelf={this.handleShelfChange} shelfName={'Read'} books={
                             this.state.allBooks.filter((book) => book.shelf === 'read')} />
                     </div>
                 </div>

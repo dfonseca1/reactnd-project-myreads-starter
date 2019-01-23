@@ -16,9 +16,11 @@ class BookShelf extends React.Component {
         console.log("changeShelfHandler", bookChanged);
         console.log("newShelf", newShelf);
 
-        this.setState(prevState => {
-                books: prevState.books.filter( book => book.id !== bookChanged.id);
-            });
+        this.props.changeShelf(bookChanged, newShelf);
+
+        // this.setState(prevState => {
+        //         books: prevState.books.filter( book => book.id !== bookChanged.id);
+        //     });
 
         // BooksAPI.update(book, event.target.value)
         // .then((res) => {
