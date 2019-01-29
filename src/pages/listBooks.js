@@ -13,14 +13,17 @@ class ListBooks extends React.Component {
     }
 
     handleShelfChange(bookChanged, newShelf) {
-        let newBook = this.state.allBooks.filter(book => book.id === bookChanged.id);
-        newBook[0].shelf = newShelf;
+        let newBook = this.state.allBooks.filter(book => book.id === bookChanged.id)[0];
+        newBook.shelf = newShelf;
 
-        this.setState({
-            allBooks: [...this.state.allBooks, newBook]
+        console.log("BookToUpdate", newBook);
+        BooksAPI.update(newBook, newShelf)
+        .then((book) => {
+            console.log("BooksApiUpdate", book);
+            this.setState({
+                allBooks: [...this.state.allBooks.filter(book =>  book.id != newBook.id), newBook]
+            });
         });
-
-        
     }
 
     componentDidMount() {
@@ -29,7 +32,7 @@ class ListBooks extends React.Component {
                 this.setState({
                     allBooks: books
                 });
-                console.log(books);
+                console.log("BooksApiGetAll", books);
             });
     }
 
