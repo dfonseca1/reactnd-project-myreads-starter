@@ -30,7 +30,13 @@ To get started developing right away:
     │   ├── arrow-back.svg
     │   └── arrow-drop-down.svg
     ├── index.css # Global styles. You probably won't need to change anything here.
-    └── index.js # You should not need to modify this file. It is used for DOM rendering only.
+    └── index.js # You should not need to modify this file. It is used for DOM rendering only.'
+    ├── components # React components for MyReads Project
+        ├── bookShelf.js # Component responsible to list books for the current book shelf
+        ├── shelfChanger.js # Component responsible to change the book shelf
+    ├── pages # React pages components for MyReads Project
+        ├── listBooks.js # Page component for listing books
+        ├── searchBooks.js # Page component for search books
 ```
 
 Remember that good React design practice is to create new JS files for each component and use import/require statements to include them where they are needed.
