@@ -40,6 +40,10 @@ class SearchBooks extends Component {
                 });
                 console.log("BooksApiSearch", books);
             });
+        }else{
+            this.setState({
+                searchResult:[]
+            });
         }
     }
 
