@@ -29,9 +29,9 @@ class ShelfChanger extends React.Component {
         return (
             <div className="book-shelf-changer">
                 <select onChange={(e) => this.handleShelfChange(e)} >
-                    {this.state.shelfOptions.map(shelf => 
+                    {this.state.shelfOptions.map((shelf, index) => 
                         (
-                            <option key={shelf.value} value={shelf.shelfValue} disabled={shelf.shelfValue === currentShelf} >{shelf.shelfDescription}</option>
+                            <option key={index} value={shelf.shelfValue} disabled={shelf.shelfValue === currentShelf} >{shelf.shelfDescription}</option>
                         )
                     )}
                 </select>
