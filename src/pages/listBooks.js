@@ -21,7 +21,7 @@ class ListBooks extends React.Component {
         .then((book) => {
             console.log("BooksApiUpdate", book);
             this.setState({
-                allBooks: [...this.state.allBooks.filter(book =>  book.id != newBook.id), newBook]
+                allBooks: [...this.state.allBooks.filter(book =>  book.id !== newBook.id), newBook]
             });
         });
     }

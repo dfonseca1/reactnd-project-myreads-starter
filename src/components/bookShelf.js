@@ -13,9 +13,6 @@ class BookShelf extends React.Component {
     }
 
     changeShelfHandler(bookChanged, newShelf) {
-        console.log("changeShelfHandler", bookChanged);
-        console.log("newShelf", newShelf);
-
         this.props.changeShelf(bookChanged, newShelf);
     }
 
