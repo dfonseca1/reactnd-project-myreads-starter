@@ -32,7 +32,9 @@ class SearchBooks extends Component {
     handleSearchValueChange(event) {
         this.setState({ searchValue: event.target.value });
 
-        if (this.state.searchTerms.includes(event.target.value)) {
+        let query = event.target.value;
+
+        if (this.state.searchTerms.includes(this.formatQuery(query))) {
             BooksAPI.search(this.state.searchValue)
                 .then((books) => {
                     this.setState({
@@ -61,11 +63,11 @@ class SearchBooks extends Component {
                 });
 
                 BooksAPI.getAll()
-                .then((books) => {
-                    this.setState({
-                        allBooks: books
+                    .then((books) => {
+                        this.setState({
+                            allBooks: books
+                        });
                     });
-                });
 
             });
     }
@@ -79,11 +81,16 @@ class SearchBooks extends Component {
             });
     }
 
+    formatQuery(query) {
+        let formattedQuery = query.length > 1 &&
+            query.toLowerCase().charAt(0).toUpperCase() + query.toLowerCase().slice(1);
+        return formattedQuery;
+    }
+
     render() {
         return (
             <div className="search-books">
                 <div className="search-books-bar">
-
                     <Link className="close-search" to="/">Close</Link>
                     <div className="search-books-input-wrapper">
                         {/*
