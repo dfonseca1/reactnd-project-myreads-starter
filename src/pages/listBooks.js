@@ -9,9 +9,10 @@ class ListBooks extends React.Component {
         this.state = {
             allBooks: []
         }
+        
         this.handleShelfChange = this.handleShelfChange.bind(this);
     }
-
+    
     handleShelfChange(bookChanged, newShelf) {
         let newBook = this.state.allBooks.filter(book => book.id === bookChanged.id)[0];
         newBook.shelf = newShelf;

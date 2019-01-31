@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import * as BooksAPI from '../BooksAPI';
-import ShelfChanger from '../components/shelfChanger'
+import ShelfChanger from '../components/shelfChanger';
+import { Debounce} from 'react-throttle';
 
 class SearchBooks extends Component {
 
@@ -98,9 +99,10 @@ render() {
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
+                {/* <Debounce time="400" handler="onChange">     */}
                     <input type="text" value={this.state.searchValue}
                         onChange={this.handleSearchValueChange} placeholder="Search by title or author" />
-
+                {/* </Debounce> */}
                 </div>
             </div>
             <div className="search-books-results">

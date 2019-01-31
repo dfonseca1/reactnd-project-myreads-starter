@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import * as BooksAPI from '../BooksAPI';
 import ShelfChanger from '../components/shelfChanger'
 
-class BookShelf extends React.Component {
+class BookShelf extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
